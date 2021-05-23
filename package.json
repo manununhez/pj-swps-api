@@ -1,0 +1,31 @@
+{
+   "name": "pj-swps-api",
+   "version": "1.0.0",
+   "description": "",
+   "main": "server.js",
+   "dependencies": {
+      "compression": "^1.7.4",
+      "cors": "^2.8.5",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "googleapis": "^66.0.0",
+      "node-fetch": "^2.6.1",
+      "node-forge": "^0.10.0",
+      "pg": "^8.5.1",
+      "pg-format": "^1.0.4"
+   },
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/manununhez/pj-swps-api.git"
+   },
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/manununhez/pj-swps-api/issues"
+   },
+   "homepage": "https://github.com/manununhez/pj-swps-api#readme"
+}
