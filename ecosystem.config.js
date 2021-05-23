@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
-        name: 'dutch-auction',
-        script: 'server-pj-auction.js',
+        name: 'pj-swps',
+        script: 'server-pj-swps.js',
         watch: true,
         env_production: {
             "NODE_ENV": "production",
