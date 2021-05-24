@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const Pool = require('pg').Pool //Pool manages a dynamic list/pool of Client objects, with automatic re-connect functionality
 const format = require('pg-format');
+const fastcsv = require("fast-csv");
 
 dotenv.config();
 
@@ -40,6 +41,25 @@ const getAppTextData = (request, response) => {
             throw error
         }
         response.status(200).json(results.rows)
+    })
+}
+
+const getMemoryTaskResults = (request, response) => {
+    pool.query('SELECT * from view_visual_pattern', (error, results) => {
+        if (error) {
+            throw error
+        }
+
+        const jsonData = JSON.parse(JSON.stringify(results.rows));
+
+        response.header('Content-Type', 'text/csv');
+        response.attachment('task_result.csv');
+        fastcsv
+            .write(jsonData, { headers: true })
+            .pipe(response)
+            .on("finish", function () {
+                console.log("Write to CSV completed successfully!");
+            });
     })
 }
 
@@ -117,6 +137,7 @@ module.exports = {
     getUserInitialData,
     getVersions,
     getAppTextData,
+    getMemoryTaskResults,
     createVisualPattern,
     createUserInfo,
     createUserLogTime,
