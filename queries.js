@@ -64,22 +64,19 @@ const getMemoryTaskResults = (request, response) => {
 }
 
 const checkUserAuthAndDownloadResult = (request, response) => {
-    const { username, magic } = request.body
+    const { username, magic } = request.body.data
 
-    pool.query('select check_user($1, $2)', [username, magic], (error, results) => {
+	console.log(username)
+	console.log(magic)
+pool.query('select check_user($1, $2)', [username, magic], (error, results) => {
         if (error) {
             throw error
         }
 
-        console.log(results.rows)
-        console.log(results.rows[0].check_user)
-
-        const userExists = results.rows[0].check_user === 'true';
-
-        console.log(userExists)
+        const userExists = results.rows[0].check_user === true;
 
         if (userExists) {
-            getMemoryTaskResults()
+            getMemoryTaskResults(request, response)
         } else {
             response.status(401).send(`Not authorized`)
         }
