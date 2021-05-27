@@ -20,7 +20,6 @@ app.use(express.json())
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-
 /**
  * GET DATA
  */
