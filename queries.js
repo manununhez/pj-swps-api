@@ -63,6 +63,29 @@ const getMemoryTaskResults = (request, response) => {
     })
 }
 
+const checkUserAuthAndDownloadResult = (request, response) => {
+    const { username, magic } = request.body
+
+    pool.query('select check_user($1, $2)', [username, magic], (error, results) => {
+        if (error) {
+            throw error
+        }
+
+        console.log(results.rows)
+        console.log(results.rows[0])
+
+        const userExists = results.rows[0] === 'true';
+
+        console.log(userExists)
+
+        if (userExists) {
+            getMemoryTaskResults()
+        } else {
+            response.status(401).send(`Not authorized`)
+        }
+    })
+}
+
 const createVisualPattern = (request, response) => {
     const data = request.body
 
@@ -137,9 +160,9 @@ module.exports = {
     getUserInitialData,
     getVersions,
     getAppTextData,
-    getMemoryTaskResults,
     createVisualPattern,
     createUserInfo,
     createUserLogTime,
-    createUserGeneraldata
+    createUserGeneraldata,
+    checkUserAuthAndDownloadResult
 }

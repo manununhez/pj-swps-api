@@ -27,12 +27,12 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.get('/versions', db.getVersions)
 app.get('/apptext/:sex', db.getAppTextData)
 app.get('/inituserdata/:version', db.getUserInitialData)
-app.get('/memotask-result', db.getMemoryTaskResults)
 
 /**
  * SAVE DATA
  */
-app.post("/visualpattern", db.createVisualPattern);
-app.post("/userinfo", db.createUserInfo);
-app.post("/userlogtime", db.createUserLogTime);
-app.post("/usergeneraldata", db.createUserGeneraldata);
+app.post("/visualpattern", db.createVisualPattern)
+app.post("/userinfo", db.createUserInfo)
+app.post("/userlogtime", db.createUserLogTime)
+app.post("/usergeneraldata", db.createUserGeneraldata)
+app.post('/memotask-result', db.checkUserAuthAndDownloadResult)
