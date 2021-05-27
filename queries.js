@@ -72,9 +72,9 @@ const checkUserAuthAndDownloadResult = (request, response) => {
         }
 
         console.log(results.rows)
-        console.log(results.rows[0])
+        console.log(results.rows[0].check_user)
 
-        const userExists = results.rows[0] === 'true';
+        const userExists = results.rows[0].check_user === 'true';
 
         console.log(userExists)
 
