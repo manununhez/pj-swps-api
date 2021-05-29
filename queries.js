@@ -64,7 +64,7 @@ const getMemoryTaskResults = (request, response) => {
 }
 
 const checkUserAuthAndDownloadResult = (request, response) => {
-    const { username, magic } = request.body.data
+    const { username, magic } = request.body
 
     pool.query('select check_user($1, $2)', [username, magic], (error, results) => {
         if (error) {
