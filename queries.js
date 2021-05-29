@@ -45,7 +45,7 @@ const getAppTextData = (request, response) => {
 }
 
 const getMemoryTaskResults = (request, response) => {
-    pool.query('SELECT * from view_visual_pattern', (error, results) => {
+    pool.query('SELECT * from view_results', (error, results) => {
         if (error) {
             throw error
         }
@@ -103,7 +103,7 @@ const createUserInfo = (request, response) => {
 
     let query1 = format('INSERT INTO results_user_info (user_id, os_name, os_version, browser_name, browser_version, browser_major, browser_language, engine_name, engine_version, screen_width, screen_height) VALUES %L Returning *;', info);
 
-    let query2 = format('INSERT INTO results_user_form (user_id, ariadna_user_id, sex, age, profession, years_education, level_education, version_task) VALUES %L Returning *;', form);
+    let query2 = format('INSERT INTO results_user_form (user_id, ariadna_user_id, numer_osoby, sex, age, profession, years_education, level_education, version_task) VALUES %L Returning *;', form);
 
     // console.log(query1 + query2)
 
