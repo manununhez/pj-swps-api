@@ -100,8 +100,8 @@ const createVisualPattern = (request, response) => {
 
 const createMemoTask = (request, response) => {
     const data = request.body
-
-    const query = format('insert into results_user_memo_task (user_id, demo_patt1_mat_CORRECT, demo_patt2_mat_CORRECT, patt1_mat_CORRECT, patt1_mat_retry_CORRECT, patt2_mat_CORRECT, patt2_mat_retry_CORRECT, patt3_mat_CORRECT, patt3_mat_retry_CORRECT, patt4_mat_CORRECT, patt4_mat_retry_CORRECT, patt5_mat_CORRECT, patt5_mat_retry_CORRECT, demo_patt1_mat_TIME, demo_patt2_mat_TIME, patt1_mat_TIME, patt1_mat_retry_TIME, patt2_mat_TIME, patt2_mat_retry_TIME, patt3_mat_TIME, patt3_mat_retry_TIME, patt4_mat_TIME, patt4_mat_retry_TIME, patt5_mat_TIME, patt5_mat_retry_TIME) VALUES %L Returning *;', data)
+    
+const query = format('insert into results_user_memo_task (user_id, demo_patt1_mat_CORRECT, demo_patt2_mat_CORRECT, patt1_mat_CORRECT, patt1_mat_retry_CORRECT, patt2_mat_CORRECT, patt2_mat_retry_CORRECT, patt3_mat_CORRECT, patt3_mat_retry_CORRECT, patt4_mat_CORRECT, patt4_mat_retry_CORRECT, patt5_mat_CORRECT, patt5_mat_retry_CORRECT, demo_patt1_mat_TIME, demo_patt2_mat_TIME, patt1_mat_TIME, patt1_mat_retry_TIME, patt2_mat_TIME, patt2_mat_retry_TIME, patt3_mat_TIME, patt3_mat_retry_TIME, patt4_mat_TIME, patt4_mat_retry_TIME, patt5_mat_TIME, patt5_mat_retry_TIME) VALUES %L Returning *;', data)
 
     pool.query(query, (error, results) => {
         if (error) {
