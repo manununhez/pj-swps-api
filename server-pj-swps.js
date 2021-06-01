@@ -30,7 +30,7 @@ app.get('/inituserdata/:version', db.getUserInitialData)
 /**
  * SAVE DATA
  */
-app.post("/visualpattern", db.createVisualPattern)
+app.post("/visualpattern", db.createMemoTask)
 app.post("/userinfo", db.createUserInfo)
 app.post("/userlogtime", db.createUserLogTime)
 app.post("/usergeneraldata", db.createUserGeneraldata)
